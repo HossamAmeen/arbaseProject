@@ -1,0 +1,15 @@
+
+ <link rel="stylesheet" href="{{asset('resources/assets/admin/css/rtl-css/plugins/summernote-rtl.css')}}">
+
+
+ <!-- summernote Editor Script For Layout start-->
+     <script src="{{asset('resources/assets/admin/js/summernote.min.js')}}"></script>
+     <!-- summernote Editor Script For Layout End-->
+ 
+     <!-- Demo Ck Editor Script For Layout Start-->
+     <script src="{{asset('resources/assets/admin/js/pages/editor.js')}}"></script>
+     <!-- Demo Ck Editor Script For Layout ENd-->
+
+
+
+ {{method_field('PUT')}}
