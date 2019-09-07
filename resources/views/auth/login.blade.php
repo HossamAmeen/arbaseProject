@@ -70,7 +70,7 @@
                             <i class="glyphicon glyphicon-user"></i>
 
                         </div>
-                        <h3>Identify Yourself</h3>
+                        <h3>login forum</h3>
                         <div class="social-btn-login">
                             <ul>
                                 {{-- <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
@@ -93,7 +93,7 @@
                         <form id="form-login" action="{{ route('login') }}" class="form-horizontal ls_form" method="POST">
                                         @csrf
                               
-                            @error('email')
+                            @error('login')
                             <div class="alert alert-danger">
                                 <button type="button" class="close" data-dismiss="alert"
                                                 aria-hidden="true">&times;</button>
@@ -101,14 +101,14 @@
                             </div>
                             @enderror
                             <div class="input-group ls-group-input">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                 name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="text" class="form-control @error('login') is-invalid @enderror"
+                                 name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
 
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 
                             </div>
                              
-                            @error('email')
+                            @error('password')
                             <div class="alert alert-danger">
                                 <button type="button" class="close" data-dismiss="alert"
                                                 aria-hidden="true">&times;</button>
@@ -161,9 +161,7 @@
             </div>
         </div>
     </div>
-    <p class="copy-right big-screen hidden-xs hidden-sm">
-        <span>&#169;</span><span class="footer-year"></span>
-    </p>
+    
 </section>
 
 </body>

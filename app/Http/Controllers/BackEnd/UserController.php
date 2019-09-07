@@ -15,22 +15,33 @@ class UserController extends BackEndController
     }
 
     public function store(Request $request){
-    //    return $request->all();
-        $fileName = $this->uploadImage($request );
-        $requestArray = $request->all();
+      $requestArray = $request->all();
+        if($request->hasFile('image'))
+        {
+            $fileName = $this->uploadImage($request , 1110 , 300 );
+          if(isset($requestArray['image']) )
+          $requestArray['image'] =  $fileName;
+        }
+       
         if(isset($requestArray['password']) )
         $requestArray['password'] =  Hash::make($requestArray['password']);
-        if(isset($requestArray['image']) )
-        $requestArray['image'] =  $fileName;
+       
         $this->model->create($requestArray);
         session()->flash('action', 'تم الاضافه بنجاح');
         return redirect()->route($this->getClassNameFromModel().'.index');
     }
 
     public function update($id , Request $request){
-        $fileName = $this->uploadImage($request );
+          $requestArray = $request->all();
+        if($request->hasFile('image'))
+        {
+            $fileName = $this->uploadImage($request , 1110 , 300 );
+          if(isset($requestArray['image']) )
+          $requestArray['image'] =  $fileName;
+        }
+       
         $row = $this->model->FindOrFail($id);
-        $requestArray = $request->all();
+        
         if(isset($requestArray['password']) && $requestArray['password'] != ""){
             $requestArray['password'] =  Hash::make($requestArray['password']);
         }else{
