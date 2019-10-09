@@ -17,9 +17,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         try {
-            DB::connection()->getPdo();
-            $brefs = Bref::find(1);
-             View::share('brefs',$brefs );
+            // DB::connection()->getPdo();
+            // $brefs = Bref::find(1);
+            //  View::share('brefs',$brefs );
 
         }
          catch (\Exception $e) {
