@@ -31,7 +31,7 @@ $factory->define(App\Model\Bref::class, function (Faker $faker) {
         'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'phone' => $faker->e164PhoneNumber,
         'address' =>$faker->address ,
-        'facecbook' => "www.facebook.com",
+        'facebook' => "www.facebook.com",
         'twitter' => "https://twitter.com/",
         'instagram' => "https://www.instagram.com/",
         
