@@ -26,15 +26,46 @@
     <!--Phone Navigation Menu icon start-->
 
     <!--Left navigation start-->
+ <!--Left navigation start-->
     <ul class="mainNav">
         <li >
-            <a href="{{route('brefs.edit' , ['id' => '1'])}}" class="{{is_active('brefs')}}">
-                <i class="fa fa-dashboard"></i> <span>تعديل بيانات الموقع</span>
+            <a href="{{route('briefs.edit' , ['id' => '1'])}}" class="{{is_active('briefs')}}">
+                    <i class="fas fa-edit"></i><span>تعديل بيانات الموقع</span>
             </a>
         </li>
+        
         <li class="{{is_active('users')}}">
-            <a href="{{route('users.index')}}"  class="{{is_active('users')}}">
-                <i class="fa fa-group"></i><span>المستخدمين</span>
+                <a href="#"  class="{{is_active('users')}}">
+                        <i class="fa fa-group"></i><span>المستخدمين</span>
+                </a>  
+            <ul>
+                    <li>
+                            <a href="{{route('users.index')}}"  >
+                                    <i class="fa fa-group"></i><span>المستخدمين</span>
+                            </a>  
+                    </li>
+                    <li>
+                            <a href="{{route('users.edit' , ['id' => Auth::user()->id])}}" class="{{is_active('brefs')}}">
+                                    <i class="fas fa-edit"></i><span>تعديل بيانات الحساب</span>
+                            </a>
+                    </li>
+            </ul>
+        </li>
+      
+       <!--  <li class="{{is_active('news')}}">
+            <a href="{{('news.index')}}"  class="{{is_active('news')}}">
+                    <i class="far fa-newspaper"></i><span>الأخبار</span>
+            </a>
+        
+        </li> -->
+      
+        <li >
+            <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+             
+            
+             <i class="fa fa-power-off"></i><span>تسجيل الخروج</span>
             </a>
         
         </li>

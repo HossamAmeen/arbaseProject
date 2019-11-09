@@ -92,12 +92,12 @@
                     <div class="login-form">
                         <form id="form-login" action="{{ route('login') }}" class="form-horizontal ls_form" method="POST">
                                         @csrf
-                              
-                            @error('login')
+                            
+                            @error('user_name')
                             <div class="alert alert-danger">
                                 <button type="button" class="close" data-dismiss="alert"
                                                 aria-hidden="true">&times;</button>
-                                 <strong>sorry</strong> {{ $message }}
+                                 {{ $message }}
                             </div>
                             @enderror
                             <div class="input-group ls-group-input">
@@ -112,7 +112,7 @@
                             <div class="alert alert-danger">
                                 <button type="button" class="close" data-dismiss="alert"
                                                 aria-hidden="true">&times;</button>
-                                 <strong>sorry</strong> {{ $message }}
+                                 {{ $message }}
                             </div>
                             @enderror
                             <div class="input-group ls-group-input">

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Lang;
 
 class LoginController extends Controller
 {
@@ -27,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/brefs';
+    protected $redirectTo = '/admin/briefs';
 
     /**
      * Create a new controller instance.
@@ -49,7 +51,24 @@ class LoginController extends Controller
  
         return $fieldType;
     }
- 
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        if ( ! User::where('user_name', $request->login)->first() ) {
+            return redirect()->back()
+                ->withInput($request->only($this->username(), 'remember'))
+                ->withErrors([
+                    $this->username() => Lang::get('auth.user_name'),
+                ]);
+        }
+
+        if ( ! User::where('user_name', $request->user_name )->where('password', bcrypt($request->password))->first() ) {
+            return redirect()->back()
+                ->withInput($request->only($this->username(), 'remember'))
+                ->withErrors([
+                    'password' => Lang::get('auth.password'),
+                ]);
+        }
+    }
     /**
      * Get username property.
      *

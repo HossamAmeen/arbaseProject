@@ -13,19 +13,19 @@
                 <div class="footer-left-row">
                   <span class="footer-left-row-hdr"><img class="footer-icon" src="{{asset('web/assets/imgs/phone.png')}}"> الخط الساخن</span>
                   <br>
-                  <span class="footer-left-row-txt">{{  isset($brefs->phone) ? $brefs->phone: ''  }}</span>
+                  <span class="footer-left-row-txt">{{  isset($briefs->phone) ? $briefs->phone: ''  }}</span>
                 </div>
                 <div class="footer-left-row">
                   <span class="footer-left-row-hdr"><img class="footer-icon" src="{{asset('web/assets/imgs/mail.png')}}"> البريد الالكترونى
                   </span>
                   <br>
-                  <span class="footer-left-row-txt">{{  isset($brefs->email) ?  $brefs->email : ''  }}</span>
+                  <span class="footer-left-row-txt">{{  isset($briefs->email) ?  $briefs->email : ''  }}</span>
                 </div>
                 <div class="footer-left-row">
                   <a class="footer-l-suggest-a" data-toggle="modal" data-target="#suggestionModal">
                     <span class="footer-left-row-hdr"><img class="footer-icon" src="{{asset('web/assets/imgs/support.png')}}"> للشكاوي
                       والمقترحات</span><br>
-                      <span class="footer-left-row-txt">{{  isset($brefs->phone2) ? $brefs->phone2: ''  }}</span>
+                      <span class="footer-left-row-txt">{{  isset($briefs->phone2) ? $briefs->phone2: ''  }}</span>
                   </a>
                 </div>
               </div>
@@ -111,11 +111,11 @@
           <div class="row">
             <div class="col-5">
               <div class="footer-sm-r">
-                 @if( isset($brefs['facebook']) )
-                <a href="{{$brefs['facebook'] }}"><img class="footer-icon" src="{{asset('web/assets/imgs/facebook.png')}}"></a>
+                 @if( isset($briefs['facebook']) )
+                <a href="{{$briefs['facebook'] }}"><img class="footer-icon" src="{{asset('web/assets/imgs/facebook.png')}}"></a>
                 @endif
-                @if( isset($brefs['instagram']) )
-                <a href="{{$brefs['instagram']}}"><img class="footer-icon" src="{{asset('web/assets/imgs/instagram.png')}}"></a>
+                @if( isset($briefs['instagram']) )
+                <a href="{{$briefs['instagram']}}"><img class="footer-icon" src="{{asset('web/assets/imgs/instagram.png')}}"></a>
                 @endif
               </div>
             </div>

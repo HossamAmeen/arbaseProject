@@ -19,7 +19,7 @@
                 {{-- <div class="panel panel-default"> --}}
                    
                     <div class="panel-body">
-                        <form class="form-horizontal ls_form ls_form_horizontal" action="{{route('brefs.update' , ['id' => 1])}}" method="POST">
+                        <form class="form-horizontal ls_form ls_form_horizontal" action="{{route('briefs.update' , ['id' => 1])}}" method="POST">
                             @csrf
                             {{ method_field('put') }}
                            

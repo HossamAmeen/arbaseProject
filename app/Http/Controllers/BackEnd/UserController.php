@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\BackEnd;
 
 use Illuminate\Http\Request;
-use App\Model\User;
+use App\
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Image;
@@ -14,7 +15,7 @@ class UserController extends BackEndController
         parent::__construct($model);
     }
 
-    public function store(Request $request){
+    public function store(UserRequest $request){
       $requestArray = $request->all();
         if($request->hasFile('image'))
         {
@@ -31,7 +32,7 @@ class UserController extends BackEndController
         return redirect()->route($this->getClassNameFromModel().'.index');
     }
 
-    public function update($id , Request $request){
+    public function update($id , UserRequest $request){
           $requestArray = $request->all();
         if($request->hasFile('image'))
         {

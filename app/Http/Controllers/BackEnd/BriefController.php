@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\BackEnd;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Bref;
-use App\Model\User;
+use App\Models\Briefs;
+use App\Models\User;
 use Hash;
 
-class BrefController extends BackEndController
+class BriefController extends BackEndController
 {
-    public function __construct(Bref $model)
+    public function __construct(Briefs $model)
     {
         parent::__construct($model);
     }
     public function index()
     {
        
-        return redirect()->route('brefs.edit' , ['id' => 1]);
+        return redirect()->route('briefs.edit' , ['id' => 1]);
     }
     public function login(Request $request)
     {
@@ -94,7 +94,7 @@ class BrefController extends BackEndController
     public function update(Request $request, $id)
     {
      
-       $pref = Bref::find($id);
+       $pref = Brief::find($id);
        if(!empty($pref)){
            $pref->fill($request->all());
            $pref->save();

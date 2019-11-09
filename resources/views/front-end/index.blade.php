@@ -130,7 +130,7 @@
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                 <div class="aboutUs-txt">
                 <a>
-                        {{  isset($brefs->arDescription) ? $brefs->arDescription: ''  }}
+                        {{  isset($briefs->arDescription) ? $briefs->arDescription: ''  }}
                 </a>
                 </div>
             </div>

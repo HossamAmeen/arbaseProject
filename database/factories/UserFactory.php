@@ -10,11 +10,11 @@ use Faker\Generator as Faker;
 
 
 
-$users = App\Model\User::pluck('id')->toArray();
+$users = App\Models\User::pluck('id')->toArray();
 
 
 
-$factory->define(App\Model\User::class, function (Faker $faker) {
+$factory->define(App\Models\User::class, function (Faker $faker) {
     
     return [
         'user_name' => $faker->name,
@@ -24,7 +24,7 @@ $factory->define(App\Model\User::class, function (Faker $faker) {
         'role' => $faker->randomElement($array = range (0,1))
     ];
 });
-$factory->define(App\Model\Bref::class, function (Faker $faker) {
+$factory->define(App\Models\Brief::class, function (Faker $faker) {
     return [
         'email' => $faker->unique()->safeEmail,
         'title' => $faker->name,
@@ -38,25 +38,25 @@ $factory->define(App\Model\Bref::class, function (Faker $faker) {
         
     ];
 });
-$factory->define(App\Model\Country::class, function (Faker $faker) {
+$factory->define(App\Models\Country::class, function (Faker $faker) {
     global $users;
     return [
         'name' => $faker->name,
         'user_id' =>$faker->randomElement(  $users) ,
     ];
 });
-$factory->define(App\Model\Governorate::class, function (Faker $faker) {
+$factory->define(App\Models\Governorate::class, function (Faker $faker) {
     global $users;
-    $countries = App\Model\Country::pluck('id')->toArray();
+    $countries = App\Models\Country::pluck('id')->toArray();
     return [
         'name' => $faker->name,
         'country_id' => $faker->randomElement(  $countries),
         'user_id' =>$faker->randomElement(  $users) ,
     ];
 });
-$factory->define(App\Model\City::class, function (Faker $faker) {
+$factory->define(App\Models\City::class, function (Faker $faker) {
     global $users;
-    $governorates = App\Model\Governorate::pluck('id')->toArray();
+    $governorates = App\Models\Governorate::pluck('id')->toArray();
     return [
         'name' => $faker->name,
         'governorate_id' => $faker->randomElement(  $governorates),

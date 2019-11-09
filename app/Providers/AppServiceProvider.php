@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema; //NEW: Import Schema
 use Illuminate\Support\Facades\View;
-use App\MOdel\Brief;
+use App\Models\Briefs;
 use DB;
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         try {
             DB::connection()->getPdo();
-            $briefs = Brief::find(1);
+            $briefs = Briefs::find(1);
              View::share('briefs',$briefs );
 
         }

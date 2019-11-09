@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -38,5 +38,11 @@ class User extends Authenticatable
     ];
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    
+    public function setPasswordAttribute($pass){
+ 
+        $this->attributes['password'] = Hash::make($pass);
+ 
     }
 }

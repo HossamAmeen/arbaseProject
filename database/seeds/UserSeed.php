@@ -11,7 +11,7 @@ class UserSeed extends Seeder
      */
     public function run()
     {
-        \App\Model\User::create([
+        \App\Models\User::create([
             'full_name'=> 'admin',
             'email' => 'asd@asd.asd',
             'password' => bcrypt('admin'),
