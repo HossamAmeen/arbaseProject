@@ -3,13 +3,15 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use SoftDeletes;
+
+    use Notifiable, HasApiTokens, SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -40,9 +42,9 @@ class User extends Authenticatable
         return $this->belongsTo(User::class);
     }
     
-    public function setPasswordAttribute($pass){
+    //public function setPasswordAttribute($pass){
+       // return  $this->attributes['password'];
+      //  $this->attributes['password'] = Hash::make($pass);
  
-        $this->attributes['password'] = Hash::make($pass);
- 
-    }
+ //   }
 }
