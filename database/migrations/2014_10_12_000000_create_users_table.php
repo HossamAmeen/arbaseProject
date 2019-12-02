@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->integer('role')->default(0);
             $table->string('image')->default('user.png');
+            $table->boolean('active')->default(false);
+            $table->string('activation_token');
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

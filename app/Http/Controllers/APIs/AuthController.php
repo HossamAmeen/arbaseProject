@@ -4,9 +4,10 @@ namespace App\Http\Controllers\APIs;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\SignupActivate;
 use Carbon\Carbon;
 use App\Models\User;
-
+use Illuminate\Support\Str;
 class AuthController extends Controller
 {
     /**
@@ -20,19 +21,22 @@ class AuthController extends Controller
      */
     public function signup(Request $request)
     {
-        $request->validate([
+       
+       /* $request->validate([
             'user_name' => 'required|string',
             'full_name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed'
-        ]);       
+        ]);  */     
         $user = new User([
             'user_name'=> $request->user_name,
             'full_name'=> $request->full_name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'activation_token' => Str::random(40)
         ]);       
          $user->save();     
+         $user->notify(new SignupActivate($user));
          return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
@@ -56,7 +60,9 @@ class AuthController extends Controller
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);        
-        $credentials = request(['user_name', 'password']);      
+        $credentials = request(['user_name', 'password']);   
+          $credentials['active'] = 1;
+            $credentials['deleted_at'] = null;   
           if(!Auth::attempt($credentials))
             return response()->json([
                 'message' => 'Unauthorized'
@@ -99,5 +105,16 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         return response()->json($request->user());
+    }
+
+    public function signupActivate($token)
+    {
+        $user = User::where('activation_token', $token)->first();    if (!$user) {
+            return response()->json([
+                'message' => 'This activation token is invalid.'
+            ], 404);
+        }    $user->active = true;
+        $user->activation_token = '';
+        $user->save();    return $user;
     }
 }

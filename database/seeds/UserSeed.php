@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Str;
 class UserSeed extends Seeder
 {
     /**
@@ -18,6 +18,7 @@ class UserSeed extends Seeder
             'user_name' => "admin",
             'phone' => "01010079798",
             'user_id' => "1",
+            "activation_token"=>Str::random(40),
             'role' => 1,
         ]);  
     }
